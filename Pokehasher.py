@@ -1,9 +1,10 @@
 import asyncio
+import json
 from io import BytesIO
+
+import dhash
 import imagehash
 import lxml
-import dhash
-import json
 from aiohttp import ClientSession
 from bs4 import BeautifulSoup
 from PIL import Image
@@ -13,7 +14,7 @@ async def fetch():
 
     loop = True
     name = 'https://www.pokemon.com/us/pokedex/'
-    id = 0
+    id = 887
     pklist = {}
 
     while loop == True:
