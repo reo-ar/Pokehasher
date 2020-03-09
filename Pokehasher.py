@@ -13,7 +13,7 @@ async def fetch():
 
     loop = True
     name = 'https://www.pokemon.com/us/pokedex/'
-    id = 385
+    id = 0
     pklist = {}
 
     while loop == True:
