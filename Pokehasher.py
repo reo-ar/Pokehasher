@@ -23,7 +23,6 @@ async def fetch():
             async with session.get(url, allow_redirects=True) as response:
                 if response.status==200:
                     text = await response.read()
-                    print('url: ', response.url)
                 else:
                     print('No more Pokemon found, stopping.')
                     return
@@ -34,7 +33,6 @@ async def fetch():
             pknm = img.get('alt')
             pklink = img.get('src')
             img = BytesIO()
-            print(pklink)
             async with ClientSession() as session:
                 async with session.get(pklink) as res:
                     if res.status==200:
@@ -45,9 +43,9 @@ async def fetch():
             dhash = imagehash.dhash(imgh)
             hd = str(dhash)
             pklist[pknm] = hd
-            print(pklist)
+            print('Pokemon: %s , Hash: %s' %(pknm, hd))
 
-        with open('dhash.json', 'w') as o:
-            json.dump(pklist, o)
+    with open('dhash.json', 'w') as o:
+        json.dump(pklist, o)
 
 asyncio.get_event_loop().run_until_complete(fetch())
