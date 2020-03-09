@@ -31,6 +31,17 @@ async def fetch():
         inat = imgb.find_all('img')
         for img in inat:
             pknm = img.get('alt')
+            if 'Alola' in pknm:
+                ik = soup.title.string
+                pkn = ik.split(' ', 1)[0]
+                pknm = 'Alolan %s' %pkn
+            elif 'Galarian' in pknm:
+                ik = soup.title.string
+                pkn = ik.split(' ', 1)[0]
+                pknm = 'Galarian %s' %pkn
+            elif 'Form' in pknm:
+                ik = soup.title.string
+                pknm = ik.split(' ', 1)[0]
             pklink = img.get('src')
             img = BytesIO()
             async with ClientSession() as session:
